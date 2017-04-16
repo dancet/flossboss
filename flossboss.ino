@@ -71,8 +71,6 @@ void loop() {
 
     // read analog input on A1
     accelY = analogRead(A1);
-
-    Serial.println(accelY);
     
     // check the angle of the accelerometer
     if (!flossOpen && accelY < 350) {
