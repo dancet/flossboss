@@ -14,9 +14,9 @@ bool pasteRelock = false;
 bool initialRotateDone = false;
 
 // millis * seconds
-int pasteUnlockWait = 1000 * 3;  // time to wait between floss open and paste unlock (millis * seconds)
-int pasteRelockWait = 1000 * 5;  // time between paste unlock and relock (eg. relock sometime in the afternoon) 
-int serialReadDelay = 1000 * 1;   // accelerometer read delay, so as not to overload it
+long pasteUnlockWait = (1000L * 30);    // debug: 3 - time to wait between floss open and paste unlock (millis * seconds)
+long pasteRelockWait = (1000L * 61200); // debug: 5 - time between paste unlock and relock (61200 = 17 hours delay) 
+long serialReadDelay = (1000L * 5);     // debug: 1 - accelerometer read delay, so as not to overload it
 
 // y axis position
 int accelY;
@@ -71,6 +71,8 @@ void loop() {
 
     // read analog input on A1
     accelY = analogRead(A1);
+
+    // Serial.println(accelY);
     
     // check the angle of the accelerometer
     if (!flossOpen && accelY < 350) {
